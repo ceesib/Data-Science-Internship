@@ -25,10 +25,9 @@ print(read_data.isnull().sum()*100/read_data.shape[0])
 print(read_data.head())
 print(read_data.shape)
 
-
-
 # how is Sales are related with other variables using scatter plot.
-sns.pairplot(read_data, x_vars=['TV', 'Newspaper', 'Radio'], y_vars='Sales', height=4, aspect=1, kind='scatter')
+sns.pairplot(read_data, x_vars=['TV', 'Newspaper', 'Radio'], y_vars='Sales', height=4, aspect=1, kind='reg')
+
 plt.show()
 
 # Correlation matrix .
@@ -64,7 +63,6 @@ X_train_sm = sm.add_constant(X_train)
 # Fit the resgression line using 'OLS'
 mlr = sm.OLS(y_train, X_train_sm).fit()
 print(mlr.summary())
-#Error terms
 # Plot Actual vs. Predicted values for training data
 y_train_pred = mlr.predict(X_train_sm)
 fig = plt.figure(figsize=(12, 8))
